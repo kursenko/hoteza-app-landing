@@ -1,0 +1,15 @@
+-
+  const connectLinkData = {
+    text: "Подключиться сейчас"
+  };
+
+mixin connect()
+  section.connect.container
+    .connect__wrapper
+      .connect__icon
+        +icon("icon-hoteza-app", 70, 70)
+      h2.connect__title!= "<span class=connect__title-f-word>Начните</span> эффективно продавать услуги&nbsp;отеля онлайн"
+      p.connect__description!= "Hoteza поможет оптимизировать работу ресепшн, увеличить средний чек и&nbsp;подарить вашим гостям еще больше комфорта."
+      button(type="button" data-open-modal="conversational" class="btn connect__link")!=connectLinkData.text
+        span.connect__link-icon
+          +icon("icon-arrow-right-bold", 16, 16)

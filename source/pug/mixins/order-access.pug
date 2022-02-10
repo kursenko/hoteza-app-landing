@@ -1,0 +1,14 @@
+mixin order-access()
+  section.order-access.container
+    .order-access__bg-wrapper
+      .order-access__message-wrapper
+        h2.order-access__header
+          | Доступ ко&nbsp;всем заказам в&nbsp;ваших руках. Даже если вы&nbsp;не&nbsp;у&nbsp;ресепшн.
+        p.order-access__description
+          | Единая админка позволяет управлять заказами гостей с&nbsp;компьютера
+          | и&nbsp;со&nbsp;смартфона. Новые уведомления приходят в&nbsp;Telegram-бот.
+          | Вы&nbsp;не&nbsp;пропустите&nbsp;их, даже если на&nbsp;ресепшн никого нет.
+      .order-access__img-wrapper.order-access__img-wrapper--desktop
+        +picture("content", "order-access-background", "png", 600, 570, "Доступ ко всем заказам")
+      .order-access__img-wrapper.order-access__img-wrapper--mobile
+        +picture("content", "order-access-background-mobile", "png", 280, 166, "Доступ ко всем заказам")

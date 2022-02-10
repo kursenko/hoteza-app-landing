@@ -1,0 +1,46 @@
+-
+  const questions = [
+    {
+      question: "Сколько времени требуется для запуска приложения?",
+      answer: "После того, как мы&nbsp;получим от&nbsp;вас все необходимые данные, нам понадобятся одна-две недели, чтобы запустить тестовую версию приложения."
+    },
+    {
+      question: "Какой адрес будет иметь наше приложение?",
+      answer: "Домен будет выглядеть так: hotel.hoteza.app.</br> Вместо 'hotel' название вашего отеля."
+    },
+    {
+      question: "Что требуется от&nbsp;отеля для наполнения приложения контентом?",
+      answer: "Контент приложения&nbsp;&mdash; это базовая информация об&nbsp;отеле и&nbsp;его сервисах. Сюда&nbsp;же входят <nobr>in-room</nobr> dining меню, магазины, косметология и&nbsp;спа, экскурсии, сувениры. Контент можно прислать в&nbsp;любом удобном для вас формате: мы&nbsp;заполним все силами нашей команды. После интеграции сотрудники отеля могут самостоятельно править контент через <nobr>интуитивно-понятную</nobr> админку."
+    },
+    {
+      question: "Что требуется для кастомизации приложения?",
+      answer: "Для адаптации дизайна нам нужен брендбук отеля: логотип, цветовая схема, шрифты. Если брендбука нет, мы&nbsp;отталкиваемся от&nbsp;дизайна официального сайта."
+    },
+    {
+      question: "Что дает интеграция с&nbsp;PMS?",
+      answer: "Интеграция с&nbsp;PMS доступна при покупке лицензии Pro. Также нужен интерфейсный сервер в&nbsp;отеле (если PMS не&nbsp;поддерживает HTTP API). Интеграция дает возможность: &mdash;&nbsp;автоматической синхронизации профилей гостей между PMS и&nbsp;приложением;&nbsp; </br>&mdash; оплаты заказа на&nbsp;счет гостя в&nbsp;PMS;&nbsp; </br>&mdash; автоматической отправки приветственного письма с&nbsp;персональным QR-кодом;&nbsp; </br>&mdash; отправка оповещений гостям из&nbsp;PMS;&nbsp; </br>&mdash; просмотр счёта и&nbsp;экспресс выезд."
+    },
+    {
+      question: "Как происходит эквайринг в&nbsp;случае подключения онлайн-оплат?",
+      answer: "Интеграция с&nbsp;платежным шлюзом доступна только на&nbsp;лицензии Pro. Эквайринг осуществляется с&nbsp;использованием стороннего платёжного шлюза напрямую на&nbsp;счёт отеля. Есть несколько вариантов."
+    },
+    {
+      question: "Какие способы онлайн-оплаты доступны для гостей?",
+      answer: "Картой онлайн, СБП (система быстрых платежей), Apple Pay, Google Pay"
+    }
+  ]
+
+
+mixin questions()
+  section.questions.container
+    h2.questions__title!= "Отвечаем на&nbsp;вопросы"
+    ul.questions__list(data-accordion="parent" data-single data-close-inner)
+      each element in questions
+        li.questions__element(data-accordion="element")
+          button(class="questions__button" type="button" data-accordion="button")
+            span.questions__button-title!= element.question
+            span.questions__button-icon
+              +icon("icon-arrow-down", 22, 12)
+          .questions__content(data-accordion="content")
+            .questions__content-wrapper
+              p.questions__answer!= element.answer

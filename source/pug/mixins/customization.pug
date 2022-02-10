@@ -1,0 +1,23 @@
+-
+  const customizationInfo = {
+    heading: {
+      class: "customization__title",
+      text: "Адаптируется под фирменный стиль отеля"
+    },
+    paragraph: {
+      class: "customization__description",
+      text: "Неограниченные возможности кастомизации и&nbsp;полное соответствие фирменному стилю бренда&nbsp;отеля"
+    }
+  };
+
+  const customizationImageColors = ["green", "white", "red"];
+
+mixin customization()
+  section.customization.container
+    +section-header(customizationInfo)
+    .customization__examples
+      each imageColor in customizationImageColors
+        .customization__example(class="customization__example--" + imageColor)
+          +picture("content", "custom-mobile-" + imageColor, "jpg", 380, 736, "Варианты кастомизаций")
+
+

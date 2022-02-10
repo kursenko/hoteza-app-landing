@@ -1,0 +1,36 @@
+extends ../base/layout
+
+block variables
+  - const title = "Hoteza Web" //- на страницах кроме главной используйте О нас — ProjectName
+  - const description = "Все услуги вашего отеля сразу в телефоне гостя. Без установок."
+  - const wrapperMods = ""
+  - const hasHeader = true
+  - const headerMods = ""
+  - const hasFooter = true
+  - const footerMods = ""
+  - const currentPage = "main" //- для остальных страниц пишем пустую строку или индекс активного headerLinks
+
+block main
+  main
+    h1.visually-hidden Приложение Hoteza App
+    +intro()
+    +features()
+    +section-message("Избавьтесь от&nbsp;устаревших бумажных папок гостя. Один QR-код заменяет всё. Гость может заказать и&nbsp;оплатить любую услугу онлайн, что значительно ускоряет работу ресепшн.", "upper-green-message")
+    +services()
+    +features-service()
+    +room-service()
+    +section-message("Мы&nbsp;поможем настроить каналы продвижения вашего веб-приложения, которые действительно работают! Подключим PMS, подготовим приветственный e-mail и&nbsp;печатные материалы, перенаправим гостей со&nbsp;страницы подключения Wi-Fi.", "middle-green-message")
+    +order-access()
+    +customization()
+    +partners()
+    +section-message("Легко подключим онлайн-оплату через банковские карты, СБП,&nbsp;ApplePay и&nbsp;GooglePay. Возможно использование существующего банковского счёта и&nbsp;системы фискализации.")
+    +subscriptions()
+    +hotel-reviews()
+    +guest-reviews()
+    +questions()
+    +connect()
+
+
+block modals
+  +modal("modal--conversational modal--no-scale modal--fit-content modal--conversational")(data-modal="conversational")
+    +modal-conversational()

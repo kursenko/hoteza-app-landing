@@ -1,0 +1,64 @@
+-
+  const reviewsData = [
+    {
+      image: {
+        path: "content",
+        name: "hotel-reviews-photo-1",
+        format: "jpg",
+        width: 440,
+        height: 512,
+        altText: "Caroline Rowe photo"
+      },
+      comment: "Мы&nbsp;очень рады внедрению Hoteza. Это&nbsp;решение даёт нам множество возможностей радовать наших гостей и&nbsp;дарить им&nbsp;незабываемые впечатления. Система проста в&nbsp;использовании, легко обновляется и&nbsp;существенно сокращает трудозатраты на&nbsp;администрирование.",
+      name: "Caroline Rowe",
+      position: "Директор по&nbsp;маркетингу и&nbsp;коммуникациям, Media One Hotel Dubai"
+    },
+    {
+      image: {
+        path: "content",
+        name: "hotel-reviews-photo-2",
+        format: "jpg",
+        width: 440,
+        height: 512,
+        altText: "Caroline Rowe photo"
+      },
+      comment: "Внедрение системы Hoteza позволило нам расширить границы внутреннего маркетинга&nbsp;&mdash; выросло число посещений мероприятий и&nbsp;объемы внутренних продаж.",
+      name: "Vasja Čretnik",
+      position: "Менеджер по&nbsp;маркетингу и&nbsp;продажам Terme Olimia &amp;&nbsp;Terme Tuhelj"
+    },
+    {
+      image: {
+        path: "content",
+        name: "hotel-reviews-photo-3",
+        format: "jpg",
+        width: 440,
+        height: 512,
+        altText: "Caroline Rowe photo"
+      },
+      comment: "Мы&nbsp;получили действительно высококлассную систему, которая позволяет оставаться в&nbsp;постоянном контакте с&nbsp;нашими гостями, и&nbsp;сервис, который полностью соответствует нашим ожиданиям.",
+      name: "Эльшан Бабаев",
+      position: "Генеральный директор официальной гостиницы государственного музея &laquo;Эрмитаж&raquo;"
+    }
+  ]
+
+mixin hotel-reviews()
+  section.hotel-reviews.container
+    .hotel-reviews__header
+      h2.hotel-reviews__title Что говорят отели
+      .hotel-reviews__nav
+        button.hotel-reviews__btn.hotel-reviews__btn--prev(type="button")
+          +icon("icon-arrow-left", 43, 38)
+        button.hotel-reviews__btn.hotel-reviews__btn--next(type="button")
+          +icon("icon-arrow-right", 43, 38)
+    .hotel-reviews__swiper
+      .hotel-reviews__content-wrapper.swiper-wrapper
+        each review in reviewsData
+          .hotel-reviews__content.swiper-slide
+            .hotel-reviews__image-wrapper
+              +picture(review.image.path, review.image.name, review.image.format, review.image.width, review.image.height, review.image.altText)
+            .hotel-reviews__message
+              .hotel-reviews__comment
+                p!= review.comment
+              .hotel-reviews__author
+                p.hotel-reviews__name!= review.name
+                p.hotel-reviews__position!= review.position

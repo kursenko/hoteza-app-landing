@@ -1,0 +1,135 @@
+-
+  const guestReviewsHeader = {
+    heading: {
+      class: "guest-reviews__title",
+      text: "Что говорят гости отелей"
+    }
+  };
+  const guestReviewsData = [
+    [
+      {
+        image: {
+          path: "content",
+          name: "guest-reviews-user-1",
+          format: "jpg",
+          width: 60,
+          height: 60,
+          altText: "Фото посетителя"
+        },
+        name: "Emilly Barrett",
+        comment: "Я&nbsp;вегетарианка. Мне понравилось, что можно не&nbsp;уточнять состав каждого блюда в&nbsp;меню, а&nbsp;ознакомиться и&nbsp;заказать всё через смартфон. Везде&nbsp;бы так.",
+        companyLogo: {
+          name: "icon-booking-logo",
+          width: 110,
+          height: 19
+        }
+      },
+      {
+        image: {
+          path: "content",
+          name: "guest-reviews-user-4",
+          format: "jpg",
+          width: 60,
+          height: 60,
+          altText: "Фото посетителя"
+        },
+        name: "Christopher Doyle",
+        comment: "Спасибо, что теперь совсем не&nbsp;нужно общаться с&nbsp;людьми! Во&nbsp;время командировок это спасает. А&nbsp;ещё понравилось переключать телек с&nbsp;телефона",
+        companyLogo: {
+          name: "icon-tripadvisor-logo",
+          width: 120,
+          height: 18
+        }
+      }
+    ],
+    [
+      {
+        image: {
+          path: "content",
+          name: "guest-reviews-user-2",
+          format: "jpg",
+          width: 60,
+          height: 60,
+          altText: "Фото посетителя"
+        },
+        name: "Margaret Sims",
+        comment: "О&nbsp;приложении я&nbsp;узнал из&nbsp;письма, которое пришло на&nbsp;мою почту. Приложение залогинило сразу, мне не&nbsp;пришлось вбивать свои данные. Пользовался услугами доставки в&nbsp;номер и&nbsp;оплачивал через ApplePay. Удобно.",
+        companyLogo: {
+          name: "icon-booking-logo",
+          width: 110,
+          height: 19
+        }
+      },
+      {
+        image: {
+          path: "content",
+          name: "guest-reviews-user-5",
+          format: "jpg",
+          width: 60,
+          height: 60,
+          altText: "Фото посетителя"
+        },
+        name: "Clare Hamilton",
+        comment: "Первый раз была в&nbsp;отеле и&nbsp;ни&nbsp;разу не&nbsp;пообщалась ни&nbsp;с&nbsp;кем из&nbsp;стафа. Все мои прихоти выполняли как по&nbsp;велению волшебной палочки. Хочу&nbsp;ещё!",
+        companyLogo: {
+          name: "icon-tripadvisor-logo",
+          width: 120,
+          height: 18
+        }
+      }
+    ],
+    [
+      {
+        image: {
+          path: "content",
+          name: "guest-reviews-user-3",
+          format: "jpg",
+          width: 60,
+          height: 60,
+          altText: "Фото посетителя"
+        },
+        name: "Thomas Fletcher",
+        comment: "Очень классно, когда у&nbsp;отеля такой удобный сайт и&nbsp;не&nbsp;нужно никуда звонить, чтобы записаться в&nbsp;SPA.",
+        companyLogo: {
+          name: "icon-tripadvisor-logo",
+          width: 110,
+          height: 19
+        }
+      },
+      {
+        image: {
+          path: "content",
+          name: "guest-reviews-user-6",
+          format: "jpg",
+          width: 60,
+          height: 60,
+          altText: "Фото посетителя"
+        },
+        name: "Benedict French",
+        comment: "Отсканировал <nobr>QR-код</nobr> в&nbsp;номере и&nbsp;далее на&nbsp;протяжении всего проживания постоянно заказывал еду и&nbsp;услуги в&nbsp;номер прямо со&nbsp;своего телефона. Даже ещё находясь у&nbsp;бассейна, заказывал ужин, поднимался в&nbsp;номер, а&nbsp;еду уже принесли!",
+        companyLogo: {
+          name: "icon-booking-logo",
+          width: 110,
+          height: 19
+        }
+      }
+    ]
+  ];
+
+mixin guest-reviews()
+  section.guest-reviews.container
+    +section-header(guestReviewsHeader)
+    ul.guest-reviews__reviews-list
+      each column in guestReviewsData
+        li.guest-reviews__reviews-column
+          ul.guest-reviews__column-list
+            each review in column
+              li.guest-reviews__review
+                .guest-reviews__review-header
+                  .guest-reviews__review-img
+                    +picture(review.image.path, review.image.name, review.image.format, review.image.width, review.image.height, review.image.altText)
+                  .guest-reviews__review-info
+                    p.guest-reviews__review-name= review.name
+                    .guest-reviews__review-cite
+                      +icon(review.companyLogo.name, review.companyLogo.width, review.companyLogo.height)
+                p.guest-reviews__review-comment!= review.comment

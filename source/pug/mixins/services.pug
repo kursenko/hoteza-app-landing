@@ -1,0 +1,24 @@
+
+-
+  const servicesInfo = {
+    heading: {
+      class: "services__title",
+      text: "Работает прямо в&nbsp;браузере смартфона"
+    },
+    paragraph: {
+      class: "services__header-description",
+      text: "Все услуги отеля доступны сразу. Гостю не&nbsp;нужно ничего скачивать и&nbsp;устанавливать на&nbsp;свой смартфон."
+    }
+  };
+
+
+mixin services()
+  section.services.container
+    +section-header(servicesInfo)
+    ul.services__list
+      each card in servicesCard
+        li.services__item
+          .services__img
+            +picture('content', card.path, card.format, card.width, card.height, card.alt)
+          p.services__header!=card.header
+          p.services__description!=card.text

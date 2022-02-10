@@ -1,0 +1,89 @@
+-
+  const subscriptionsHeader = {
+    heading: {
+      class: "subscriptions__title",
+      text: "Платите только за&nbsp;то, что&nbsp;вам нужно"
+    }
+  };
+  const subscriptionsInfo = [
+    {
+      class: "subscriptions__plan--white",
+      title: "Тариф Basic",
+      description: "Электронная брошюра услуг",
+      advantages: ["Система управления веб&#8209;приложением", "QR-код гостям для быстрого доступа", "Брендинг приложения", "Информационные страницы", "Многоязычная поддержка", "Меню ресторанов", "Фотогалерея"],
+      price: {
+        month: "$99",
+        year: "$85",
+        old: "$99",
+      }
+    },
+    {
+      class: "subscriptions__plan--grey",
+      title: "Тариф Pro",
+      description: "Приём заказов, персонализация, общение с&nbsp;гостем",
+      advantages: ["Письмо гостю с&nbsp;QR-кодом", "Заказ еды в&nbsp;номер", "Бронирование ресторанов и&nbsp;спа", "Заказ гостиничных услуг", "Telegram-бот для персонала", "Профиль гостя", "Переписка с&nbsp;гостями", "Просмотр счёта", "Экспресс check-out", "Обратная связь от&nbsp;гостей", "Маркетинг-модуль", "Модуль статистики"],
+      advantagesTitle: "Всё из тарифа Basic, а также:",
+      price: {
+        month: "$249",
+        year: "$209",
+        old: "$249",
+      }
+    },
+    {
+      icon: true,
+      class: "subscriptions__plan--black",
+      title: "Add-ons",
+      titleMobile: "Add-ons",
+      description: "Расширение возможностей Pro-версии за&nbsp;счёт дополнительных интеграций",
+      advantages: ["Интеграция с&nbsp;PMS (рекомендуется)", "Мобильный ТВ-пульт", "Интеграция с&nbsp;POS и&nbsp;SOS системами", "Интеграция с&nbsp;GRMS и&nbsp;управление оборудованием&nbsp;номера", "Интеграция с&nbsp;платёжным шлюзом для&nbsp;приёма онлайн-оплат"],
+      advantagesTitle: "",
+      price: null
+    }
+  ];
+  const buttonsText = ["Раз в&nbsp;год", "Каждый месяц"];
+
+mixin subscriptions()
+  section.subscriptions.container
+    +section-header(subscriptionsHeader)
+    .subscriptions__content.is-year
+      .subscriptions__duration
+        .subscriptions__buttons
+          each text, i in buttonsText
+            if (i === 0)
+              button(type="button" class="subscriptions__btn subscriptions__btn--year active")!= text
+            else
+              button(type="button" class="subscriptions__btn subscriptions__btn--month")!= text
+        .subscriptions__duration-description
+          p!= "Единоразово оплачивается подключение и&nbsp;наполнение контентом вашего отеля – $900"
+      +subscription-plans(subscriptionsInfo)
+
+mixin subscription-plans(plansInfo)
+  .subscriptions__swiper
+    .subscriptions__plans.swiper-wrapper
+      each planInfo in plansInfo
+        .subscriptions__plan-wrapper.swiper-slide
+          .subscriptions__plan(class=planInfo.class)
+            .subscriptions__plan-header
+              h3.subscriptions__plan-title= planInfo.title
+              if (planInfo.titleMobile)
+                p.subscriptions__plan-title-mob!= planInfo.titleMobile
+              p.subscriptions__plan-description!= planInfo.description
+              if (planInfo.icon)
+                .subscriptions__plan-header-icon
+                  +icon("icon-plan-add", 15, 28)
+            .subscriptions__advantages
+              if (planInfo.advantagesTitle)
+                p.subscriptions__advantages-title!= planInfo.advantagesTitle
+              ul.subscriptions__advantages-list
+                each advantage in planInfo.advantages
+                  li.subscriptions__advantage!= advantage
+            .subscriptions__price
+              if (planInfo.price)
+                .subscriptions__price-number
+                  .subscriptions__price-year!= planInfo.price.year
+                  .subscriptions__price-month!= planInfo.price.month
+                .subscriptions__price-period
+                  .subscriptions__price-head!= planInfo.price.old
+                  .subscriptions__price-foot /месяц
+              else
+                .subscriptions__price-request По запросу
