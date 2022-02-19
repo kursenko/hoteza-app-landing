@@ -52,7 +52,7 @@ InitConversational.prototype = {
             'ecommerce': {
               currencyCode: 'RUB',
               checkout: {
-                actionField: {step: evt.detail.step},
+                actionField: {step: (evt.detail.step + 1)},
               },
             },
             'event': 'gtm-ee-event',
